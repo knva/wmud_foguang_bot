@@ -18,7 +18,7 @@ class state():
 
             state.state= message['state']
             print(state.state)
-            if '挖矿中' in state.state:
+            if '挖矿中' in state.state or '闭关' in state.state:  # 什么 竟然还有武帝
                 # 查找G_queue队列中是否存在任务
                 taskdata = G_queue.get()
                 uid = taskdata['uid']
