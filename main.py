@@ -1,3 +1,4 @@
+import sys
 import threading
 
 import websocket
@@ -60,14 +61,25 @@ def on_open(ws):
 
 
 if __name__ == "__main__":
-    # login to sever
-    # input username and password and area
-    username = input("Username: ")
-    password = input("Password: ")
-    area = input("Area: ")
+    # 获得args参数，如果参数是5个，则第1个为username 第二个为password 第三个为 area 第四个为 Role['uid']
+    args = sys.argv
+    if len(args) == 5:
+        username = args[1]
+        password = args[2]
+        area = args[3]
+        util.Role['uid'] = args[4]
+    else:
+        # login to sever
+        # input username and password and area
+        username = input("Username: ")
+        password = input("Password: ")
+        area = input("Area: ")
     # connect to server
     userdata = GetLoginInfo(username, password)
     G_COOKIE = userdata.getCookie()
+    if G_COOKIE== '':
+        print("Login failed")
+        sys.exit(0)
     serverurl = userdata.getServerUrl(area)
 
     # websocket.enableTrace(True)
