@@ -34,9 +34,13 @@ class GetLoginInfo:
                 self.u=item.value
     def getServer(self):
         url = 'http://www.wamud.com/Game/GetServer'
-        opener = urllib.request.build_opener()
-        req = urllib.request.Request(url,method='get')
-        res = opener.open(req).read()
+        #get 访问url
+        req = urllib.request.Request(url)
+        #获取网页内容
+        response = urllib.request.urlopen(req)
+        #获取网页内容
+        res= response.read()
+
         json = self.convet_json(res)
         for item in json:
             tmp = {"{0}".format(item['ID']):"ws://{0}:{1}".format(item['IP'],item['Port'])}
