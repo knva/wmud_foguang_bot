@@ -11,3 +11,6 @@ requie python3
 
 PS. if bot disconnect,  the bot will reconnect
     if your need run daily and wudao, you must be stop the bot
+
+This script is built by the JetBrains tool suite
+https://www.jetbrains.com/
